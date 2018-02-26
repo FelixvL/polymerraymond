@@ -1,0 +1,47 @@
+<link rel="import" href="bower_components/polymer/polymer-element.html">
+<link rel="import" href="binnenste-element.html">
+
+<dom-module id="buitenste-element">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+    <button on-click="probeersel">in Buitenste</button>
+    <binnenste-element id=binnen></binnenste-element>
+  </template>
+
+  <script>
+    /**
+     * `buitenste-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class BuitensteElement extends Polymer.Element {
+      static get is() { return 'buitenste-element'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'buitenste-element'
+          }
+        };
+      }
+      probeersel(){
+        alert("methode probeersel in buitenste");
+        this.$.binnen.trial();
+      }
+      hoedan(){
+          alert("methode in binnenste");
+          
+      }
+    }
+
+    window.customElements.define(BuitensteElement.is, BuitensteElement);
+  </script>
+</dom-module>
